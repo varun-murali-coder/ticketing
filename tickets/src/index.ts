@@ -6,7 +6,7 @@ import { OrderCreatedListener } from './events/listeners/order-created-listener'
 import { OrderCancelledListener } from './events/listeners/order-cancelled-listener';
 
 const start=async ()=>{
-    console.log('Staring up full fledge..')
+    console.log("Started well");
     if(!process.env.JWT_KEY){
         throw new Error('JWT_KEY must be defined'); 
     }
