@@ -1,0 +1,32 @@
+npm install bull @types/bull
+docker build -t vcoderlearn/expiration .
+docker push vcoderlearn/expiration
+
+Create redis and expiration-depl
+To manually restart a pod:-
+kubectl delete pod <cont-id>
+
+Step 1:-expiration service listens for order-created
+Step 2:-expiration service asks bull js to remind after 15 min.
+Then emits expiration:complete.
+
+How bull is used?
+->  Convert mp4 file to mkv file
+->Bull(web server) sends job object to redis(contains worker servers).
+
+Web server and worker servers both have bull js
+redis just store list of jobs.
+->With bull create queue and process.
+->in our app both web and worker server are same -->expiration service
+
+1)signup;signin
+2)create ticket ->take id
+3)create order
+post https://ticketing.dev/orders
+Content-Type:app/json
+{
+    "ticketId":""
+}
+
+//Test with commenting delay
+//Now go to order-service to handle expiration:complete event
